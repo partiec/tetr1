@@ -4,8 +4,11 @@ import com.example.tetr1.templates.Template;
 import com.example.tetr1.templates.Template_T;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.effect.Light;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
@@ -32,6 +35,7 @@ public class TetrisApplication extends Application {
         // 3. Возвращаем ее
         AnchorPane root = getAnchorPane();
 
+
         // Новая Фигура
         // На каждой итерации происходит следующее:
         // 1. Создание 1 rec
@@ -52,10 +56,27 @@ public class TetrisApplication extends Application {
                 for (int i = downers.size() - 1; i >= 0; i--) {
                     //координаты
                     Rec downer = downers.get(i);
+                    downer.setDirection(Direction.DOWN);
                     int x = (int) downer.getX();
                     int y = (int) downer.getY();
 
-                    // увеличенный y
+                    // увеличиваем координаты
+                    if (downer.getDirection() == Direction.LEFT) {
+                        x -= Const.PXL;
+                        downer.setX(x);
+                        System.out.println("left");
+                    }
+                    if (downer.getDirection() == Direction.RIGHT) {
+                        x += Const.PXL;
+                        downer.setX(x);
+                    }
+                    if (downer.getDirection() == Direction.UP) {
+                        //rotation figure
+                    }
+                    if (downer.getDirection() == Direction.DOWN) {
+                        // down figure
+                    }
+
                     y++;
                     downer.setY(y);
 
@@ -107,6 +128,35 @@ public class TetrisApplication extends Application {
         //-----------------------/
 
         Scene scene = new Scene(root, Const.WIDTH_PXL, Const.HEIGHT_PXL);
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                Direction direction = null;
+                int correction = 0;
+                if (keyEvent.getCode() == KeyCode.LEFT) {
+                    direction = Direction.LEFT;
+                    correction = -Const.PXL;
+                }
+                if (keyEvent.getCode() == KeyCode.RIGHT) {
+                    direction = Direction.RIGHT;
+                    correction = Const.PXL;
+                }
+                if (keyEvent.getCode() == KeyCode.UP) {
+                    direction = Direction.UP;
+                }
+                if (keyEvent.getCode() == KeyCode.DOWN) {
+                    direction = Direction.DOWN;
+                }
+
+
+                for (Rec rec : downers) {
+                    rec.setDirection(direction);
+                    int newX = (int) (rec.getX() + correction);
+                    rec.setX(newX);
+                }
+
+            }
+        });
         stage.setTitle("Tetris MalYsha!");
         stage.setScene(scene);
         stage.show();
@@ -187,6 +237,7 @@ public class TetrisApplication extends Application {
             line.setFill(Color.GRAY);
             root.getChildren().add(line);
         }
+
         return root;
     }
 

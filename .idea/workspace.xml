@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6c1e7e8-e0fd-4666-a6b5-3714272f5c25" name="Changes" comment="test figure stop">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Locator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/MyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template.java" afterDir="false" />
+    <list default="true" id="f6c1e7e8-e0fd-4666-a6b5-3714272f5c25" name="Changes" comment="locatorDown test">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Direction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Const.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Rec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Rec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/TetrisApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/TetrisApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_T.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_T.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_UpDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_UpDown.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -80,7 +75,8 @@
       <updated>1707260165096</updated>
       <workItem from="1707260166050" duration="6581000" />
       <workItem from="1707266861251" duration="9555000" />
-      <workItem from="1707306061105" duration="22876000" />
+      <workItem from="1707306061105" duration="23383000" />
+      <workItem from="1707340925833" duration="3576000" />
     </task>
     <task id="LOCAL-00001" summary="test rectangle down">
       <created>1707267573076</created>
@@ -103,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707272307881</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="locatorDown test">
+      <created>1707338036240</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707338036240</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,19 +116,20 @@
     <MESSAGE value="test rectangle down" />
     <MESSAGE value="test figure down" />
     <MESSAGE value="test figure stop" />
-    <option name="LAST_COMMIT_MESSAGE" value="test figure stop" />
+    <MESSAGE value="locatorDown test" />
+    <option name="LAST_COMMIT_MESSAGE" value="locatorDown test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/tetr1/TetrisApplication.java</url>
-          <line>18</line>
+          <line>21</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/tetr1/TetrisApplication.java</url>
-          <line>26</line>
+          <line>29</line>
           <properties class="com.example.tetr1.TetrisApplication" method="start">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
