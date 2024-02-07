@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6c1e7e8-e0fd-4666-a6b5-3714272f5c25" name="Changes" comment="test figure down">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Rec.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_T.java" afterDir="false" />
+    <list default="true" id="f6c1e7e8-e0fd-4666-a6b5-3714272f5c25" name="Changes" comment="test figure stop">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Locator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/MyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Const.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Template_UpDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_UpDown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Rec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Rec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/TetrisApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/TetrisApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_T.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_T.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_UpDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_UpDown.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +50,26 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="TetrisApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.tetr1.TetrisApplication" />
+      <module name="tetr1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.tetr1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TetrisApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,7 +79,8 @@
       <option name="presentableId" value="Default" />
       <updated>1707260165096</updated>
       <workItem from="1707260166050" duration="6581000" />
-      <workItem from="1707266861251" duration="5428000" />
+      <workItem from="1707266861251" duration="9555000" />
+      <workItem from="1707306061105" duration="22876000" />
     </task>
     <task id="LOCAL-00001" summary="test rectangle down">
       <created>1707267573076</created>
@@ -73,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707270105373</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="test figure stop">
+      <created>1707272307881</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707272307881</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -82,6 +112,27 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test rectangle down" />
     <MESSAGE value="test figure down" />
-    <option name="LAST_COMMIT_MESSAGE" value="test figure down" />
+    <MESSAGE value="test figure stop" />
+    <option name="LAST_COMMIT_MESSAGE" value="test figure stop" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/tetr1/TetrisApplication.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/tetr1/TetrisApplication.java</url>
+          <line>26</line>
+          <properties class="com.example.tetr1.TetrisApplication" method="start">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

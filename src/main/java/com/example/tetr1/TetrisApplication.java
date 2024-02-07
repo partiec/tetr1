@@ -1,15 +1,15 @@
 package com.example.tetr1;
 
+import com.example.tetr1.templates.Template;
 import com.example.tetr1.templates.Template_T;
-import com.example.tetr1.templates.Template_UpDown;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.effect.Light;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,9 +17,136 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TetrisApplication extends Application {
+    List<Rec> downers = new ArrayList<>();
+    List<Rec> freezers = new ArrayList<>();
+    int baseX = (Const.WIDTH_RECT / 2) * Const.PXL;
+    int baseY = 0;
+    Template template;
+
     @Override
     public void start(Stage stage) throws IOException {
 
+        // Создание Панели
+        // 1. Создаем белую панель
+        // 2. На ней рисуем гориз и верт линии
+        // 3. Возвращаем ее
+        AnchorPane root = getAnchorPane();
+
+        // Новая Фигура
+        // На каждой итерации происходит следующее:
+        // 1. Создание 1 rec
+        // 2. Установка ему координат, размеров, цвета
+        // 3. Помещаем rec в downers
+        // 4. Помещаем rec на панель
+        newFigure(root, downers, baseX, baseY);
+
+
+        // Создаем  и запускаем таймер--------
+        AnimationTimer at = new AnimationTimer() {
+
+            // handle() запускается на КАЖДОМ КАДРЕ !!!
+            @Override
+            public void handle(long l) {
+
+                // downer : downers с конца
+                for (int i = downers.size() - 1; i >= 0; i--) {
+                    //координаты
+                    Rec downer = downers.get(i);
+                    int x = (int) downer.getX();
+                    int y = (int) downer.getY();
+
+                    // увеличенный y
+                    y++;
+                    downer.setY(y);
+
+                    //  Устанавливаем локаторы
+                    Locator downLocator = new Locator();
+                    downLocator.setX(x);
+                    downLocator.setY(y + Const.PXL);
+
+
+                    // если нащупал дно
+                    if (downLocator.getY() == Const.HEIGHT_PXL) {
+                        // переводим downers во freezers
+                        // downers очищаем
+                        // newFigure() заполняет downers
+                        freezers.addAll(downers);
+                        downers.clear();
+                        newFigure(root, downers, baseX, baseY);
+
+                        break;
+                    }
+
+                    // если нащупал freezer
+                    // freezer : freezers c конца
+                    for (int j = freezers.size() - 1; j >= 0; j--) {
+                        Rec freezer = freezers.get(j);
+
+                        if (downLocator.getY() == freezer.getY() && downLocator.getX() == freezer.getX()) {//нащупал
+
+                            // переводим downers во freezers
+                            // downers очищаем
+                            // newFigure() заполняет downers
+                            freezers.addAll(downers);
+                            downers.clear();
+                            newFigure(root, downers, baseX, baseY);
+
+                            break;
+
+                        }
+                    }
+
+
+                }
+
+
+            }
+
+        };
+        at.start();
+        //-----------------------/
+
+        Scene scene = new Scene(root, Const.WIDTH_PXL, Const.HEIGHT_PXL);
+        stage.setTitle("Tetris MalYsha!");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    // Новая Фигура
+    // На каждой итерации происходит следующее:
+    // 1. Создание 1 rec
+    // 2. Установка ему координат, размеров, цвета
+    // 3. Помещаем rec в downers
+    // 4. Помещаем rec на панель
+    private void newFigure(AnchorPane root, List<Rec> downers, int baseX, int baseY) {
+        template = MyService.chooseTemplate();
+        for (int i = 0; i < template.matrix_1().length; i++) {
+            for (int j = 0; j < template.matrix_1().length; j++) {
+
+                if (template.matrix_1()[i][j] == 1) {
+
+                    Rec rec = new Rec();
+
+                    rec.setX(baseX + (j * Const.PXL));
+                    rec.setY(baseY + (i * Const.PXL));
+                    rec.setWidth(Const.PXL);
+                    rec.setHeight(Const.PXL);
+                    rec.setFill(Color.DARKMAGENTA);
+                    rec.setStroke(Color.GRAY);
+
+                    downers.add(rec);
+                    root.getChildren().add(rec);
+                }
+            }
+        }
+    }
+
+
+    // Создание Панели
+    // 1. Создаем белую панель
+    // 2. На ней рисуем гориз и верт линии
+    // 3. Возвращаем ее
+    private static AnchorPane getAnchorPane() {
         // pane
 
         AnchorPane root = new AnchorPane();
@@ -27,8 +154,8 @@ public class TetrisApplication extends Application {
 
         // lines coordinates
         int x1 = 0;
-        int x2 = 0;
         int y1 = 0;
+        int x2 = 0;
         int y2 = 0;
 
         // horizontal lines
@@ -60,59 +187,7 @@ public class TetrisApplication extends Application {
             line.setFill(Color.GRAY);
             root.getChildren().add(line);
         }
-
-        // rectangle test--------
-        List<Rectangle> list = new ArrayList<>();
-
-        int rX = (Const.WIDTH_RECT / 2) * Const.PXL;
-        int rY = 0;
-
-        for (int y = 0; y < Template_T.matrix_1.length; y++) {
-            for (int x = 0; x < Template_T.matrix_1.length; x++) {
-
-                if (Template_T.matrix_1[y][x] == 1) {
-
-                    Rectangle rectangle = new Rectangle();
-
-                    rectangle.setX(rX + (x * Const.PXL));
-                    rectangle.setY(rY + (y * Const.PXL));
-                    rectangle.setWidth(Const.PXL);
-                    rectangle.setHeight(Const.PXL);
-                    rectangle.setFill(Color.DARKMAGENTA);
-
-                    list.add(rectangle);
-                    root.getChildren().add(rectangle);
-                }
-            }
-        }
-
-        AnimationTimer at = new AnimationTimer() {
-            @Override
-            public void handle(long l) {
-
-                for (Rectangle r : list) {
-
-                    int x = (int) r.getX();
-                    int y = (int) r.getY();
-                    y++;
-                    r.setY(y);
-                }
-
-                for (int i = list.size() - 1; i >= 0; i--) {
-
-                    if (list.get(i).getY() == Const.BOTTOM) {
-                        stop();
-                    }
-                }
-            }
-        };
-        at.start();
-        //-----------------------/
-
-        Scene scene = new Scene(root, Const.WIDTH_PXL, Const.HEIGHT_PXL);
-        stage.setTitle("Tetris MalYsha!");
-        stage.setScene(scene);
-        stage.show();
+        return root;
     }
 
     public static void main(String[] args) {
