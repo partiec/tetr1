@@ -11,6 +11,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TetrisApplication extends Application {
     @Override
@@ -57,27 +59,49 @@ public class TetrisApplication extends Application {
             root.getChildren().add(line);
         }
 
-        // rectangle test------
-        int xR = (Const.WIDTH_RECT / 2) * Const.PXL;
-        int yR = 0;
-        Rectangle rectangle = new Rectangle(xR, yR, Const.PXL, Const.PXL);
-        rectangle.setFill(Color.GREEN);
-        root.getChildren().add(rectangle);
+        // rectangle test--------
+        List<Rectangle> list = new ArrayList<>();
+
+        int rX = (Const.WIDTH_RECT / 2) * Const.PXL;
+        int rY = 0;
+
+        for (int y = 0; y < Template_UpDown.matrix_1.length; y++) {
+            for (int x = 0; x < Template_UpDown.matrix_1.length; x++) {
+
+                if (Template_UpDown.matrix_1[y][x] == 1) {
+
+                    Rectangle rectangle = new Rectangle();
+
+                    rectangle.setX(rX + (x * Const.PXL));
+                    rectangle.setY(rY + (y * Const.PXL));
+                    rectangle.setWidth(Const.PXL);
+                    rectangle.setHeight(Const.PXL);
+                    rectangle.setFill(Color.DARKMAGENTA);
+
+                    list.add(rectangle);
+                    root.getChildren().add(rectangle);
+                }
+            }
+        }
 
         AnimationTimer at = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                int y = (int) rectangle.getY();
-                y++;
-                rectangle.setY(y);
 
-                if (rectangle.getY() == (Const.HEIGHT_PXL - Const.PXL)){
-                    stop();
+                for (Rectangle r : list){
+
+                    int x = (int) r.getX();
+                    int y = (int) r.getY();
+
+                    y++;
+
+                    r.setY(y);
+
                 }
             }
         };
         at.start();
-
+        //-----------------------/
 
         Scene scene = new Scene(root, Const.WIDTH_PXL, Const.HEIGHT_PXL);
         stage.setTitle("Tetris MalYsha!");
