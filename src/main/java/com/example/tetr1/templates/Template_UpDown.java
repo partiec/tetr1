@@ -1,4 +1,4 @@
-package com.example.tetr1;
+package com.example.tetr1.templates;
 
 public class Template_UpDown {
 

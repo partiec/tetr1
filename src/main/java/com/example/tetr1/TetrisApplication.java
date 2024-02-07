@@ -1,5 +1,7 @@
 package com.example.tetr1;
 
+import com.example.tetr1.templates.Template_T;
+import com.example.tetr1.templates.Template_UpDown;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -65,10 +67,10 @@ public class TetrisApplication extends Application {
         int rX = (Const.WIDTH_RECT / 2) * Const.PXL;
         int rY = 0;
 
-        for (int y = 0; y < Template_UpDown.matrix_1.length; y++) {
-            for (int x = 0; x < Template_UpDown.matrix_1.length; x++) {
+        for (int y = 0; y < Template_T.matrix_1.length; y++) {
+            for (int x = 0; x < Template_T.matrix_1.length; x++) {
 
-                if (Template_UpDown.matrix_1[y][x] == 1) {
+                if (Template_T.matrix_1[y][x] == 1) {
 
                     Rectangle rectangle = new Rectangle();
 
@@ -88,15 +90,19 @@ public class TetrisApplication extends Application {
             @Override
             public void handle(long l) {
 
-                for (Rectangle r : list){
+                for (Rectangle r : list) {
 
                     int x = (int) r.getX();
                     int y = (int) r.getY();
-
                     y++;
-
                     r.setY(y);
+                }
 
+                for (int i = list.size() - 1; i >= 0; i--) {
+
+                    if (list.get(i).getY() == Const.BOTTOM) {
+                        stop();
+                    }
                 }
             }
         };

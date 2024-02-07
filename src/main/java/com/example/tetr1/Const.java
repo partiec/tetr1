@@ -6,4 +6,5 @@ public class Const {
     static int HEIGHT_RECT = 25;
     static int WIDTH_PXL = PXL * WIDTH_RECT;
     static int HEIGHT_PXL = PXL * HEIGHT_RECT;
+    static int BOTTOM = HEIGHT_PXL - PXL;
 }

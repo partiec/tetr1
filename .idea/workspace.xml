@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6c1e7e8-e0fd-4666-a6b5-3714272f5c25" name="Changes" comment="test rectangle down">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Template_UpDown.java" afterDir="false" />
+    <list default="true" id="f6c1e7e8-e0fd-4666-a6b5-3714272f5c25" name="Changes" comment="test figure down">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Rec.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_T.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Const.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/Template_UpDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/templates/Template_UpDown.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tetr1/TetrisApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tetr1/TetrisApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1707260165096</updated>
       <workItem from="1707260166050" duration="6581000" />
-      <workItem from="1707266861251" duration="3211000" />
+      <workItem from="1707266861251" duration="5428000" />
     </task>
     <task id="LOCAL-00001" summary="test rectangle down">
       <created>1707267573076</created>
@@ -62,7 +66,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707267573076</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="test figure down">
+      <created>1707270105373</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707270105373</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -70,6 +81,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test rectangle down" />
-    <option name="LAST_COMMIT_MESSAGE" value="test rectangle down" />
+    <MESSAGE value="test figure down" />
+    <option name="LAST_COMMIT_MESSAGE" value="test figure down" />
   </component>
 </project>
