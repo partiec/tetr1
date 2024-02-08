@@ -1,12 +1,10 @@
 package com.example.tetr1;
 
 import com.example.tetr1.templates.Template;
-import com.example.tetr1.templates.Template_T;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.effect.Light;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +23,8 @@ public class TetrisApplication extends Application {
     int baseX = (Const.WIDTH_RECT / 2) * Const.PXL;
     int baseY = 0;
     Template template;
+    Locator downLeftLocator;
+    Locator rightLocator;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -64,7 +64,6 @@ public class TetrisApplication extends Application {
                     if (downer.getDirection() == Direction.LEFT) {
                         x -= Const.PXL;
                         downer.setX(x);
-                        System.out.println("left");
                     }
                     if (downer.getDirection() == Direction.RIGHT) {
                         x += Const.PXL;
@@ -81,13 +80,16 @@ public class TetrisApplication extends Application {
                     downer.setY(y);
 
                     //  Устанавливаем локаторы
-                    Locator downLocator = new Locator();
-                    downLocator.setX(x);
-                    downLocator.setY(y + Const.PXL);
+                    downLeftLocator = new Locator();
+                    downLeftLocator.setX(x);
+                    downLeftLocator.setY(y + Const.PXL);
+                    rightLocator = new Locator();
+                    rightLocator.setX(x + Const.PXL);
+                    rightLocator.setY(y + Const.PXL);
 
 
                     // если нащупал дно
-                    if (downLocator.getY() == Const.HEIGHT_PXL) {
+                    if (downLeftLocator.getY() == Const.HEIGHT_PXL) {
                         // переводим downers во freezers
                         // downers очищаем
                         // newFigure() заполняет downers
@@ -98,12 +100,13 @@ public class TetrisApplication extends Application {
                         break;
                     }
 
+
                     // если нащупал freezer
                     // freezer : freezers c конца
                     for (int j = freezers.size() - 1; j >= 0; j--) {
                         Rec freezer = freezers.get(j);
 
-                        if (downLocator.getY() == freezer.getY() && downLocator.getX() == freezer.getX()) {//нащупал
+                        if (downLeftLocator.getY() == freezer.getY() && downLeftLocator.getX() == freezer.getX()) {//нащупал
 
                             // переводим downers во freezers
                             // downers очищаем
@@ -133,13 +136,26 @@ public class TetrisApplication extends Application {
             public void handle(KeyEvent keyEvent) {
                 Direction direction = null;
                 int correction = 0;
+
                 if (keyEvent.getCode() == KeyCode.LEFT) {
-                    direction = Direction.LEFT;
-                    correction = -Const.PXL;
+                    if (downLeftLocator.getX() <= 0) {
+                        correction = 0;
+                    } else {
+                        direction = Direction.LEFT;
+                        correction = -Const.PXL;
+                    }
                 }
+
                 if (keyEvent.getCode() == KeyCode.RIGHT) {
-                    direction = Direction.RIGHT;
-                    correction = Const.PXL;
+
+                    if (downLeftLocator.getX()+ template.wide1()*Const.PXL >= Const.WIDTH_PXL) {
+                        correction = 0;
+                    } else {
+                        direction = Direction.RIGHT;
+                        correction = +Const.PXL;
+                    }
+
+
                 }
                 if (keyEvent.getCode() == KeyCode.UP) {
                     direction = Direction.UP;
@@ -171,7 +187,7 @@ public class TetrisApplication extends Application {
     private void newFigure(AnchorPane root, List<Rec> downers, int baseX, int baseY) {
         template = MyService.chooseTemplate();
         for (int i = 0; i < template.matrix_1().length; i++) {
-            for (int j = 0; j < template.matrix_1().length; j++) {
+            for (int j = 0; j < template.matrix_1()[0].length; j++) {
 
                 if (template.matrix_1()[i][j] == 1) {
 
